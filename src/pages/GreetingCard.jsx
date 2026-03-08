@@ -17,6 +17,8 @@ const NAME_MESSAGES = {
     riya: 'Hi Riya 🌸 You are full of life and inspire everyone around you.',
     hetvi: 'Hi Hetvi 💕 You light up lives just by being you. always helpful to me ',
     mummy: 'Hi Mummy 🌹 You are the heart and soul of our family, always loving and caring.',
+    aarti: 'Hi Aarti 🌼 Your kindness and warmth make you truly special. You are a wonderful person. always understand and our friendship is unexpected like god send people speically for us like that',
+    
 }
 
 const DEFAULT_MSG = 'Happy Women\'s Day 🌸 You are amazing and inspiring.'
