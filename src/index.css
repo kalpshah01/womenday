@@ -1,0 +1,430 @@
+/* =====================================================
+   Global CSS — Women's Day Surprise
+   Soft feminine palette: pink + white + soft purple
+   ===================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --pink: #ff80ab;
+  --pink-light: #ffe4f0;
+  --pink-mid: #ffb3d1;
+  --purple: #ce93d8;
+  --purple-light: #f3e5f5;
+  --white: #ffffff;
+  --text-dark: #5d3754;
+  --text-mid: #7b5670;
+  --shadow: 0 8px 32px rgba(206, 147, 216, 0.3);
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --font-body: 'Nunito', sans-serif;
+  --font-display: 'Pacifico', cursive;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: var(--font-body);
+  background: linear-gradient(135deg, #fff0f5 0%, #f9f0ff 50%, #fff0f5 100%);
+  background-attachment: fixed;
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+#root,
+.app-wrapper {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ── Page Container ── */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  position: relative;
+  animation: fadeSlideUp 0.55s ease both;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Card / Glass Box ── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(255, 176, 213, 0.4);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2rem;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+/* ── Typography ── */
+h1.display {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  color: var(--pink);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h2.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-mid);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+p.body-text {
+  color: var(--text-mid);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  outline: none;
+  user-select: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(255, 128, 171, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 28px rgba(255, 128, 171, 0.55);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-secondary {
+  background: #fff;
+  color: var(--pink);
+  border: 2px solid var(--pink-mid);
+  box-shadow: 0 4px 14px rgba(255, 128, 171, 0.18);
+}
+
+.btn-secondary:hover {
+  background: var(--pink-light);
+  transform: translateY(-2px);
+}
+
+.btn-no {
+  background: var(--purple-light);
+  color: var(--purple);
+  border: 2px solid var(--purple);
+  position: fixed;
+  transition: none;
+  /* movement is JS-driven */
+  z-index: 10;
+}
+
+.btn-no:hover {
+  background: #e8d5f0;
+}
+
+/* ── Input ── */
+.input-field {
+  width: 100%;
+  padding: 0.85rem 1.2rem;
+  border: 2px solid var(--pink-mid);
+  border-radius: 14px;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-dark);
+  background: rgba(255, 255, 255, 0.9);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.input-field:focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px rgba(255, 128, 171, 0.2);
+}
+
+.input-field::placeholder {
+  color: #c9a0bc;
+}
+
+textarea.input-field {
+  resize: vertical;
+  min-height: 120px;
+  text-align: left;
+}
+
+/* ── Upload area ── */
+.upload-area {
+  border: 2.5px dashed var(--pink-mid);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  margin-bottom: 1.2rem;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.upload-area:hover,
+.upload-area.drag-over {
+  background: var(--pink-light);
+  border-color: var(--pink);
+}
+
+.upload-area span {
+  display: block;
+  color: var(--text-mid);
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.upload-icon {
+  font-size: 3rem;
+}
+
+.preview-img {
+  max-width: 100%;
+  max-height: 220px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 16px rgba(206, 147, 216, 0.3);
+}
+
+/* ── Floating Hearts Background ── */
+.hearts-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  bottom: -60px;
+  font-size: 1.4rem;
+  animation: floatHeart linear infinite;
+  opacity: 0;
+}
+
+@keyframes floatHeart {
+  0% {
+    opacity: 0;
+    transform: translateY(0) rotate(0deg) scale(0.8);
+  }
+
+  10% {
+    opacity: 0.7;
+  }
+
+  80% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-110vh) rotate(360deg) scale(1.2);
+  }
+}
+
+/* ── Polaroid Card ── */
+.polaroid-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.polaroid {
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px 14px 36px;
+  box-shadow: 0 16px 40px rgba(206, 147, 216, 0.4), 0 4px 16px rgba(0, 0, 0, 0.08);
+  max-width: 320px;
+  width: 100%;
+  animation: floatPolaroid 4s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+@keyframes floatPolaroid {
+  0% {
+    transform: translateY(0px) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-14px) rotate(2deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(-2deg);
+  }
+}
+
+/* Fixed-height frame — all photos are cropped consistently like a real Polaroid */
+.polaroid-photo-frame {
+  width: 100%;
+  height: 240px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #f8eaf4;
+}
+
+.polaroid-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 6px;
+  display: block;
+}
+
+.polaroid-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, var(--pink-light), var(--purple-light));
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+}
+
+.polaroid-caption {
+  padding-top: 14px;
+  text-align: center;
+}
+
+.polaroid-caption h3 {
+  font-family: var(--font-display);
+  color: var(--pink);
+  font-size: 1.3rem;
+  margin-bottom: 0.4rem;
+}
+
+.polaroid-caption p {
+  color: var(--text-mid);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* ── Stars ── */
+.stars-row {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.star-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+  line-height: 1;
+}
+
+.star-btn:hover {
+  transform: scale(1.25);
+}
+
+.star-btn.active {
+  filter: drop-shadow(0 0 6px rgba(255, 180, 0, 0.6));
+}
+
+/* ── Thank you ── */
+.thankyou-box {
+  background: linear-gradient(135deg, var(--pink-light), var(--purple-light));
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  animation: fadeSlideUp 0.5s ease;
+}
+
+.thankyou-box h2 {
+  font-family: var(--font-display);
+  color: var(--pink);
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Spacing helpers ── */
+.mt-1 {
+  margin-top: 0.5rem;
+}
+
+.mt-2 {
+  margin-top: 1rem;
+}
+
+.mt-3 {
+  margin-top: 1.5rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 1rem;
+}
+
+.gap-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .glass-card {
+    padding: 2rem 1.2rem;
+  }
+
+  .polaroid {
+    max-width: 280px;
+  }
+}
