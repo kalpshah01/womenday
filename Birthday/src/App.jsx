@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import WelcomePage from './WelcomePage';
 import PhotoFrame from './PhotoFrame';
 import ScratchCard from './ScratchCard';
 import FinalPage from './FinalPage';
 import './index.css';
+
+// background audio config: low volume loop between 28s and 60s
+
 
 const PAGE_VARIANTS = {
   initial: { opacity: 0, x: 60 },
@@ -16,8 +19,34 @@ const pages = ['welcome', 'photos', 'scratch', 'final'];
 
 function App() {
   const [page, setPage] = useState('welcome');
+  const audioRef = useRef(null);
 
-  const goTo = (name) => setPage(name);
+  useEffect(() => {
+    const audio = new Audio('/song.mp3');
+    audio.volume = 0.15; // low volume
+    audio.currentTime = 28;
+    const onTime = () => {
+      if (audio.currentTime >= 60) {
+        audio.currentTime = 28;
+      }
+    };
+    audio.addEventListener('timeupdate', onTime);
+    audio.play().catch(() => {});
+    audioRef.current = audio;
+
+    return () => {
+      audio.pause();
+      audio.removeEventListener('timeupdate', onTime);
+    };
+  }, []);
+
+  const goTo = (name) => {
+    // attempt to play if user has interacted (avoids autoplay block)
+    if (audioRef.current && audioRef.current.paused) {
+      audioRef.current.play().catch(() => {});
+    }
+    setPage(name);
+  };
 
   return (
     <AnimatePresence mode="wait">
